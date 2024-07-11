@@ -1,0 +1,1 @@
+from .hotelier_user_model import *

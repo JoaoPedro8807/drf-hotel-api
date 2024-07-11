@@ -1,0 +1,1 @@
+from .base_hotel_test import *
