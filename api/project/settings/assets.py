@@ -1,7 +1,5 @@
 from .enviroment import BASE_DIR, DATA_DIR
 from pathlib import Path
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
 ENV_DIR = BASE_DIR / 'dotenv_files' / '.env'
