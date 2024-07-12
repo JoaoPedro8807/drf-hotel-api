@@ -6,7 +6,7 @@ from .views import  HotelViewSet, ListHotelViewset, HotelDetailViewSet
 app_name = 'hotel'
 
 router = SimpleRouter()
-list_router = SimpleRouter()
+#list_router = SimpleRouter()
 router.register(
     '',
     HotelViewSet,
