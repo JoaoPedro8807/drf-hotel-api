@@ -24,8 +24,13 @@ Deploy da API: [link para o deploy se houver]
 
 ## 📈 Rascunho do diagrama 
 ![DIAGRAMA](/api/utils/schema.png)
+![DIAGRAMA](/api/utils/cachec.png)
 
-    Fiz esse rascunho no início projeto como rascunho de ideias, o fluxo para cada usuário segue esse diagrama com seus respectivos fluxos e dados, com pequenas alterações.
+    Fiz esses rascunhos no início projeto como rascunho de ideias, o fluxo para cada usuário segue esse diagrama com seus respectivos fluxos e dados, com pequenas alterações.
+
+    
+
+
 
     
 
