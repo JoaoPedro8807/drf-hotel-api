@@ -12,5 +12,7 @@ INSTALLED_APPS = [
     'hotelier',
     'hotel',
     'booking',
-    'django_celery_beat'
+    'django_celery_beat',
+    'drf_spectacular',
+    'drf_spectacular_sidecar',
 ]   

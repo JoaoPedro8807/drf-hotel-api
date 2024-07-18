@@ -7,4 +7,7 @@ from django.contrib.contenttypes.fields import GenericRelation
 import re
 
 class RoomManager(models.Manager):
-    ...
+    def availables(self, *args, **kwargs):
+        return self.filter(
+            available = True
+        ).select_related('hotel')

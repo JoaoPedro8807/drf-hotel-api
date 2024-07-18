@@ -14,7 +14,7 @@ def update_room_status(sender, instance, created, **kwargs):
         try:
             room = instance.room
             room.available = False
-            room.save()
+            room.save()     
             
         except (Exception, ObjectDoesNotExist) as error:
             print('erro  ao mudar o status: ', error)
@@ -33,12 +33,22 @@ def send_booking_confirmation_email_task(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=Booking)    
 def att_booking_celery_task(sender, instance, created, **kwargs):
+    """
+    schedule the booking atualizate, then task will work when  end_date booking finish
+    """
     if created:
         days = instance.days
         ETA = (datetime.now() + timedelta(days=days)).replace(second=0, microsecond=0) 
         data = BookingSerializer(instance=instance).data
+        user_data = { #user data to send finalizatino booking email, etc..
+            'email': instance.guest.auth_user.email,
+            'username': instance.guest.auth_user.username,
+        }
         booking_att_task.apply_async(
-            kwargs={'request_data': data},
+            kwargs={
+                'request_data': data,
+                'user_data': user_data
+                },
             eta=ETA
         )
 

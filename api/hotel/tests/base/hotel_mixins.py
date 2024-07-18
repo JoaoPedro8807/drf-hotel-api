@@ -28,82 +28,29 @@ class HotelMixin(UserAPIMixin):
             })
         return login            
     
-    
-    
     def make_hotel_data(
             self,
             hotelier:str = None,
             name:str = 'Testando',
-            total_rooms: int = 10,
-            stars_classs: int = 3,
-            rooms:list[object] =  [
-                {
-                    "room_number": 1,
-                    "room_type": "S",
-                    "daily_price": "150.00",
-                    "available": True
-                },
-                {
-                    "room_number": 2,
-                    "room_type": "T",
-                    "daily_price": "250.00",
-                    "available": True
-                },
-                {
-                    "room_number": 3,
-                    "room_type": "D",
-                    "daily_price": "200.00",
-                    "available": True
-                },
-                {
-                    "room_number": 4,
-                    "room_type": "S",
-                    "daily_price": "150.00",
-                    "available": True
-                },
-                {
-                    "room_number": 5,
-                    "room_type": "D",
-                    "daily_price": "200.00",
-                    "available": True
-                },
-                {
-                    "room_number": 6,
-                    "room_type": "S",
-                    "daily_price": "150.00",
-                    "available": True
-                },
-                {
-                    "room_number": 7,
-                    "room_type": "S",
-                    "daily_price": "150.00",
-                    "available": True
-                },
-                {
-                    "room_number": 8,
-                    "room_type": "S",
-                    "daily_price": "150.00",
-                    "available": True
-                },
-                {
-                    "room_number": 9,
-                    "room_type": "S",
-                    "daily_price": "150.00",
-                    "available": True
-                },
-                {
-                    "room_number": 10,
-                    "room_type": "S",
-                    "daily_price": "150.00",
-                    "available": True
-                }
-            ]):
+            stars_classs: int = 3,      
+            hotel_description: str = 'tararararadadawrara',
+            rating: float = 9.9,
+            street: str = 'Rua tarara',
+            city: str = 'city tarara',
+            state:str = 'state tararara',
+            zip_code: str = '123321'
+            ):
         return {
             "hotelier": hotelier,
             "name": name,
-            "total_rooms": len(rooms),
             "stars_class": stars_classs,
-            "rooms": rooms
+            "hotel_description": hotel_description,
+            "rating": rating,
+            "street": street,
+            "city": city,
+            "state": state,
+            "zip_code": zip_code
+
         }
     def make_hotel_object(self, hotelier):
         data = self.make_hotel_data(hotelier=hotelier)
@@ -112,7 +59,7 @@ class HotelMixin(UserAPIMixin):
     
     def make_hotel(self, hotelier_user, access_token, extra_data={}):
         hotel_data = self.make_hotel_data(hotelier=hotelier_user, **extra_data)
-    
+        print('DATA INDO PRO REQUEST', json.dumps(hotel_data))
         response = self.client.post(
             reverse('hotel:hotel_viewset-list'),
             data=json.dumps(hotel_data),
@@ -138,7 +85,7 @@ class HotelMixin(UserAPIMixin):
         return response
         
         
-
+    
 
 
 

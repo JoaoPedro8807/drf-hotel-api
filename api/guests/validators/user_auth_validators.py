@@ -16,7 +16,6 @@ class UserAuthValidator:
         self.clean()
 
     def clean(self, *args, **kwargs):
-        print('INICIANDO O CLEAN COM DATA: ', self.data)
         self.clean_password()
         self.clean_type_user()
         self.clean_username()

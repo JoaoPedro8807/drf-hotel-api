@@ -1,9 +1,10 @@
 from .base import UserAPIBaseTest
 from django.urls import reverse
 from rest_framework import status
-from parameterized import parameterized
-from django.core.exceptions import ValidationError
-
+import os
+import django
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "project.settings")
+django.setup()
 
 class UserAPITest(UserAPIBaseTest):
     def test_user_login(self):
@@ -76,7 +77,7 @@ class UserAPITest(UserAPIBaseTest):
 
         response = self.client.patch(
             reverse('guests:user_edit', args=[user2_id]),
-            data={'first_name': 'não era pra ser alterado'},
+            data={'first_name': 'não era pra ser alterado'}                                                                             ,
             headers={'Authorization': f'Bearer {jwt}'}
         )
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)

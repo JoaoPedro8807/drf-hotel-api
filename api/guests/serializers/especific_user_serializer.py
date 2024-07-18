@@ -13,5 +13,4 @@ def serializer_especific(user: UserAuth):
 
     elif isinstance(especific_user, HotelierUser):
         return HotelierSerializer(especific_user).data
-    print('NO TESTE NENHUM DOS DOIS')
     return None

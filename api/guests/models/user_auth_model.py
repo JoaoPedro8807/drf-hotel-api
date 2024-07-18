@@ -1,14 +1,11 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-from rest_framework.validators import ValidationError
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.core.exceptions import ValidationError as DjangoValidationError
 import re
 from .abstract_model import BaseAbstractModel
 from .managers.user_auth_manager import UserManager
 import os
-import json
-
 
 type_user_env = os.environ.get('HOTEL_USERS_TYPES', None)
 TYPES_USERS = (
@@ -16,12 +13,7 @@ TYPES_USERS = (
     ('HL', 'Hotelier' )
     )
 
-
-print('TYPE_USERS: ', TYPES_USERS)
-
-
 class UserAuth(AbstractBaseUser, PermissionsMixin, BaseAbstractModel): #Model primário tanto para guets e hotelier
-   
     objects = UserManager()
     email = models.EmailField(_("user email"), max_length=50, unique=True)
     username = models.CharField(_("user name"), max_length=50, blank=False, null=False)
@@ -62,7 +54,7 @@ class UserAuth(AbstractBaseUser, PermissionsMixin, BaseAbstractModel): #Model pr
         return super().clean()
 
     def clean_password(self):
-        reg_string = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,30}$' #a lower and upper word, a number and 8-30 chars
+        reg_string = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,30}$' #a lower, upper word, a number and 8-30 chars
         password = self.password
         if not re.match(reg_string, password):
             raise DjangoValidationError('A senha não atende aos requisitos')

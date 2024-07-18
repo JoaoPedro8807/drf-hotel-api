@@ -8,12 +8,12 @@ from datetime import datetime
 
 class Booking(AbstractHotelModel):
     start_date = models.DateField(auto_now_add=True, editable=False)  
-    end_date = models.DateField(blank=True)      
+    end_date = models.DateField(blank=True, null=True)      
     days = models.PositiveIntegerField(_('days'))
     guest = models.OneToOneField("guests.UserGuest", verbose_name=_("guest"), on_delete=models.CASCADE, related_name='booking')
     room = models.OneToOneField("hotel.Room", verbose_name=_("room"), on_delete=models.CASCADE, related_name='room')
     status = models.BooleanField(_("status"), default=True)
-    price = models.DecimalField(_("price"), max_digits=10, decimal_places=2, blank=True)
+    price = models.DecimalField(_("price"), max_digits=10, decimal_places=2, blank=True, null=True)
 
     class Meta:
         verbose_name = _("booking")

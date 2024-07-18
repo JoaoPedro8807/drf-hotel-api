@@ -15,8 +15,8 @@ class BookingEditTest(BookingTestBase, BookingEditMixin):
         guest_id = guest_login.data.get('user_info').get('guest_id')
         access = guest_login.data.get('access')
 
-        room = self.make_room_to_booking()
-        room_id = room.get('id')
+        room = self.make_room_and_hotel()
+        room_id = str(room.data.get('id'))
 
         booking = self.make_only_booking(
             guest_id=guest_id,
@@ -42,8 +42,8 @@ class BookingEditTest(BookingTestBase, BookingEditMixin):
         guest2_id = guest2.data.get('user_info').get('guest_id')
         access_2 = guest2.data.get('access')
 
-        room = self.make_room_to_booking()
-        room_id = room.get('id')
+        room = self.make_room_and_hotel()
+        room_id = str(room.data.get('id'))
 
         booking = self.make_only_booking(
             guest_id=guest1_id,

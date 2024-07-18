@@ -7,7 +7,6 @@ class BookingPermission(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
         method = request.method.upper()
         print('comparando', obj.guest.id, 'com', request.user.guest_user.id)
-        #print('e comparando ',  obj.room.hotel.hotelier, 'com ', request.user.hotelier_user )
         if method == 'DELETE': #delete só hotelier 
             return obj.guest.id == request.user.guest_user.id 
            

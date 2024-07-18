@@ -1,10 +1,15 @@
-# Importações necessárias
-from django.db.models.signals import post_save
+# signals.py
+from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
-from ..models.hotel_model import Hotel
-from ..models.room_model import Room
+from django.dispatch import receiver
+from ..models import  Hotel
+from django.core.cache import cache
+from django.conf import settings
 
 @receiver(post_save, sender=Hotel)
-def create_hotel_rooms(sender, instance, created, **kwargs):
-    if created:
-        ...
+@receiver(post_delete, sender=Hotel)
+def delete_list_hotel_viewset_cache(sender, instance, **kwargs):
+    cache_key = 'hotel-model-list' #prefix key on viewset
+    keys_pattern = f"views.decorators.cache.cache_page.{cache_key}.*.{settings.LANGUAGE_CODE}.{settings.TIME_ZONE}" #the default format in redis-cache
+    cache.delete_pattern(keys_pattern) #delete from redis
+

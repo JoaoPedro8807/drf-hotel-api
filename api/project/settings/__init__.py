@@ -14,6 +14,7 @@ from .cors_headers import *
 from .celery_config import *
 from .email_config import *
 from .default_app_values import *
+from .cache import *
 
 
 

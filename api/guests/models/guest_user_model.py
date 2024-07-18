@@ -4,14 +4,13 @@ from django.utils.translation import gettext_lazy as _
 from rest_framework.validators import ValidationError
 from django.utils import timezone
 from django.contrib.contenttypes.fields import GenericRelation
-import re
 from .abstract_model import BaseAbstractModel
-from hotel.models.abstract_model import AbstractHotelModel
+from hotel.models.abstract_model import AbstractHospedagemModel
 
 
 class UserGuestManager(models.Manager):
      def create_guest(
-            self,
+            self,   
             auth_user,
             document: str,
             phone_number: str,
@@ -28,14 +27,14 @@ class UserGuestManager(models.Manager):
         return guest
 
 
-class UserGuest(AbstractHotelModel):  
+class UserGuest(AbstractHospedagemModel):  
     auth_user = models.OneToOneField("guests.UserAuth", verbose_name=_("guest_user"), on_delete=models.CASCADE, related_name='guest_user')
     document = models.CharField(_("CPF"), max_length=50, unique=True)     #Guest and Hotelier use a different type of document  s
     birthday = models.DateField(_("user birthday"), default=timezone.now, blank=True, null=True) 
     phone_number = models.CharField(_("phone number"), max_length=20, blank=True)
     first_name = models.CharField(_("first name"), max_length=50, blank=True)
     last_name = models.CharField(_("last name"), max_length=50, blank=True)      
-    
+        
     objects = UserGuestManager()
 
     class Meta:
@@ -48,5 +47,4 @@ class UserGuest(AbstractHotelModel):
 
     def save(self, *args, **kwargs):
         sp = super().save(*args, **kwargs)
-        print('FIELD DO SAVE: ', self.auth_user)
         return sp

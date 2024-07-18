@@ -1,32 +1,52 @@
 from django.urls import path, include
-from rest_framework.routers import SimpleRouter, DefaultRouter
+from rest_framework.routers import SimpleRouter
 
-from .views import  HotelViewSet, ListHotelViewset, HotelDetailViewSet
+from .views import (
+    HotelViewSet, 
+    ListHotelViewset, 
+    HotelDetailViewSet, 
+    ListRoomViewSet, 
+    RoomViewSet,
+    RoomDetailView
+
+    )
 
 app_name = 'hotel'
 
-router = SimpleRouter()
-#list_router = SimpleRouter()
-router.register(
+hotel_router = SimpleRouter()
+hotel_router.register(
     '',
-    HotelViewSet,
+    HotelViewSet, #viewset to edit
     basename='hotel_viewset'
 )
-router.register(
+
+hotel_router.register(
+    'detail',
+    HotelDetailViewSet, #view detail
+    basename='detail_hotel'
+)   
+hotel_router.register(
     'list',
-    ListHotelViewset,
+    ListHotelViewset, #view list
     basename='list_hotel'
 )   
-router.register(
-    'detail',
-    HotelDetailViewSet,
-    basename='detail_hotel'
+room_router = SimpleRouter()
+
+room_router.register(
+    '',
+    RoomViewSet,
+    basename='room_viewset'
+
+)
+room_router.register(
+    'list',
+    ListRoomViewSet,
+    basename='list_room'
 )
 
-
-print('URLS DO HOTEL: ', router.urls)
-
 urlpatterns = [  
-    path('', include(router.urls))
-    #path('list', include(list_router.urls))
+    path('hotel/', include(hotel_router.urls)),
+    path('room/', include(room_router.urls)),
+    path('room/detail/<uuid:id>/', RoomDetailView.as_view(), name='room-detail' )
+    #path('room/list/', ListRoomView.as_view(), name='room-list')
 ]

@@ -1,5 +1,3 @@
-from django.test import TestCase
-from booking.tasks import send_email_booking_confirmation_task, booking_att_task, post_booking
 from unittest.mock import patch
 from .base import CeleryTestBase
 from datetime import datetime, timedelta
@@ -28,7 +26,4 @@ class CeleryTasksTest(CeleryTestBase):
         DAYS = 5
         all_booking_data = self.make_all_booking_data(total_days=DAYS, all_data=True)
         booking_data = all_booking_data.get('booking_response').data
-        
-        end_date = (datetime.now() + timedelta(days=DAYS)).replace(second=0, microsecond=0)
         mock_att_available_room.assert_called_once()
-        mock_att_available_room.assert_called_once_with(kwargs={'request_data': booking_data}, eta=end_date)

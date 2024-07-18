@@ -1,10 +1,10 @@
 from django.contrib.auth import get_user_model 
 from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
-from ..models.guest_user_model import UserGuest
+from ...models.guest_user_model import UserGuest
 from hotelier.models.hotelier_user_model import HotelierUser
-from ..validators import UserAuthValidator
-from .user_guest_serializer import GuestUserSerializer
+from ...validators import UserAuthValidator
+from ..user_guest_serializer import GuestUserSerializer
 from hotelier.serializers.hotelier_serializer import HotelierSerializer
 
 
@@ -19,7 +19,7 @@ class UserAuthSerializer(ModelSerializer):
             'email',
             'password',
             'created_at',
-            'is_staff', 
+            'is_staff',     
             'type_user',
             'user_id',
             'auth_info',
@@ -55,7 +55,7 @@ class UserAuthSerializer(ModelSerializer):
     
     def validate(self, attrs):
         sp = super().validate(attrs)
-        if self.context['request'].method.upper() == 'PATCH': #In partial update, the seriliazer and model check for each field, not validators
+        if self.context['request'].method.upper() == 'PATCH': 
             return sp 
         
         UserAuthValidator(
@@ -63,13 +63,27 @@ class UserAuthSerializer(ModelSerializer):
             ErrorClass=serializers.ValidationError, 
         )
         return sp
-    
+
+
+class UserAuthInfoSerializer(ModelSerializer):
+    class Meta: 
+        model = User
+        fields = [
+            'last_login',
+            'created_at',
+            'updated_at',
+            'email',
+            'username',
+            'is_active',
+            'is_staff',
+            'type_user',
+        ]
 
                    
 
             
+            
         
-    
 
         
 

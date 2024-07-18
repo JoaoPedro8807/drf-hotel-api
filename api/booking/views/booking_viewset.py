@@ -3,21 +3,19 @@ from ..models.booking_model import Booking
 from rest_framework.permissions import IsAuthenticated
 from ..serializers.booking_serizlier import BookingSerializer
 from ..permissions import BookingPermission
-from ..services import att_available_room
 from rest_framework.validators import ValidationError as APIValidationError
-from django.core.exceptions import ObjectDoesNotExist, ValidationError
-from rest_framework import status
-from django.core.mail import send_mail
 
 
 
-class BookingViewSet(mixins.CreateModelMixin,
-                       mixins.RetrieveModelMixin,
-                       mixins.ListModelMixin,
-                       mixins.DestroyModelMixin,
-                       viewsets.GenericViewSet):
+class BookingViewSet(
+        viewsets.GenericViewSet,
+        mixins.CreateModelMixin,
+        mixins.RetrieveModelMixin,
+        mixins.ListModelMixin,
+        mixins.DestroyModelMixin):
     """
-    viewset to create, delete, retrive a booking    
+    endpoint make and deleting  a booking, neddes logged as guest.
+    this booking will att room and hotel status, send confirmation, send finalization email when booking is finish etc.
     """
     queryset = Booking.objects.all()
     http_method_names  = ['post', 'delete', 'get']

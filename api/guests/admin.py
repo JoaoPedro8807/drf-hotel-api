@@ -46,11 +46,9 @@ class UserChangeForm(forms.ModelForm):
         
 
 class UserAdmin(BaseUserAdmin):
-    # Forms para adicionar e alterar instâncias de usuário
     form = UserChangeForm
     add_form = UserCreationForm 
 
-    # Os campos a serem usados ao exibir o modelo de User.
     list_display = ['id', 'email', 'is_staff', 'is_superuser', 'created_at']
     list_display_links = ['email']
     search_fields = ['email', 'username']

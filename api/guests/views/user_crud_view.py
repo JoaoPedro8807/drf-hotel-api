@@ -19,7 +19,10 @@ from django.core.exceptions import ValidationError
 
 UserAuthModel = get_user_model()
 
-class UserCrudViewSet(viewsets.ModelViewSet):  
+class UserCrudViewSet(viewsets.ModelViewSet): 
+    """
+    endpoint do CRUD user. nedded be loggen with your instance, this changes will refleting in guest/hotelier instance too.
+    """ 
     User = get_user_model()
     queryset = User.objects.all()
     http_method_names = ['post', 'patch', 'delete']   
@@ -63,9 +66,7 @@ class UserCrudViewSet(viewsets.ModelViewSet):
         teste = especific_serializer(data=extra_fields, context={'request': request})
         teste.is_valid(raise_exception=True)
 
-     
-
-        with transaction.atomic():
+        with transaction.atomic(): #bove create in a unique session, when a error is raise, above inserts is rollback
             try:
                 auth_user = UserAuthModel.objects.create_user(
                     **validated_user_data,

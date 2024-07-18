@@ -13,8 +13,8 @@ from rest_framework.validators import ValidationError
 
 class BookingAPITest(BookingTestBase):
     def test_create_a_booking(self):
-        hotel = self.make_login_and_hotel().get('create_response')
-        room_to_booking = hotel.data.get('rooms')[0]
+        room = self.make_room_and_hotel()
+        room_id = str(room.data.get('id'))
 
         guest_data = self.make_user_data(
             email='testandobooking@gmail.com', 
@@ -36,7 +36,7 @@ class BookingAPITest(BookingTestBase):
   
         post_data = {
             'guest': str(guest_id),
-            'room': room_to_booking.get('id'),
+            'room': room_id,
             'days': 5
         }   
 
@@ -64,15 +64,16 @@ class BookingAPITest(BookingTestBase):
         guest_id = guest_login.data.get('user_info').get('guest_id')
         access = guest_login.data.get('access')
 
-        room = self.make_room_to_booking()
-        room_id = room.get('id')
+        room = self.make_room_and_hotel()
+        room_id = str(room.data.get('id'))
+
         booking = self.make_only_booking(
             guest_id=guest_id,
             access=access,
             room_id=room_id,
             total_days=5
         )
-        self.assertEqual(room.get('room_number'), booking.data.get('room_detail').get('room_number'))
+        self.assertEqual(room.data.get('room_number'), booking.data.get('room_detail').get('room_number'))
 
     @patch('booking.validators.entry_booking_validator.MIN_DAYS', new=3)
     def test_min_days_of_booking(self):
@@ -87,9 +88,10 @@ class BookingAPITest(BookingTestBase):
         guest_id = guest_login.data.get('user_info').get('guest_id')
         access = guest_login.data.get('access')
 
-        room = self.make_room_to_booking()
-        room_id = room.get('id')
-        room_price = room.get('daily_price')
+        room = self.make_room_and_hotel()
+        room_id = str(room.data.get('id'))
+
+        room_price = room.data.get('daily_price')
         TOTAL_DAYS = 5
         real_price = round((float(room_price) * TOTAL_DAYS), 2)
 
@@ -106,8 +108,9 @@ class BookingAPITest(BookingTestBase):
         guest_id = guest_login.data.get('user_info').get('guest_id')
         access = guest_login.data.get('access')
 
-        room = self.make_room_to_booking()
-        room_id = room.get('id')
+        room = self.make_room_and_hotel()
+        room_id = str(room.data.get('id'))
+
         TOTAL_DAYS = 5
         booking = self.make_only_booking(
             guest_id=guest_id,

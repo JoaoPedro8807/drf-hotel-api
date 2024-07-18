@@ -2,6 +2,8 @@ from rest_framework import serializers
 from ..models import Hotel
 from ..models import Room
 from ..serializers.room_serializer import RoomSerializer
+
+
 class HoteListSerializer(serializers.HyperlinkedModelSerializer):
     detail = serializers.HyperlinkedIdentityField(
         view_name='hotel:detail_hotel-detail',  
@@ -9,7 +11,16 @@ class HoteListSerializer(serializers.HyperlinkedModelSerializer):
     )
     class Meta:
         model = Hotel
-        fields = ['id', 'name', 'total_rooms', 'stars_class', 'available_rooms', 'detail']
+        fields = [
+            'id', 
+            'name', 
+            'total_rooms', 
+            'stars_class', 
+            'available_rooms', 
+            'hotel_description',
+            'rating',
+            'detail',
+            ]
     
 
 
@@ -22,6 +33,8 @@ class HotelDetailSerializer(serializers.ModelSerializer):
             'name',
             'total_rooms',
             'stars_class',
+            'hotel_description',
+            'rating',            
             'total_available_rooms',
         ]
 
@@ -33,8 +46,8 @@ class HotelDetailSerializer(serializers.ModelSerializer):
         rooms = Room.objects.filter(
             hotel=self.instance,
             available=True
-        )
-        return RoomSerializer(instance=rooms, many=True).data
+        )                                                                                           
+        return RoomSerializer(instance=rooms, many=True, context=self.context).data
     
     def to_representation(self, instance):
         representation =  super().to_representation(instance)

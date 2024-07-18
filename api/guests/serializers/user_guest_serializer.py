@@ -14,8 +14,7 @@ class GuestUserSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         validate = super().validate(attrs)
-        print('ATTRS DO VALIDATE', attrs)
-
+        
         UserGuestValidator(
             data=attrs
         )

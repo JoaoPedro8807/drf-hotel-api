@@ -1,6 +1,6 @@
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from .especific_user_serializer import serializer_especific
-from .user_serializer import  UserAuthSerializer
+from ..especific_user_serializer import serializer_especific
+from .user_auth_serializer import  UserAuthSerializer
 
 class LoginTokenSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):

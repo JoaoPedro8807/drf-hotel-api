@@ -6,7 +6,6 @@ class AbstractHotelModel(models.Model):
     created_at = models.DateField(auto_now_add=True, editable=False)
     updated_at = models.DateField(auto_now=True, editable=False)
     
-
     class Meta:
         abstract = True
         ordering = ['-created_at']

@@ -13,7 +13,7 @@ class UserAtuhModelMixin:
             username:str = 'username_teste',
             is_staff:bool = False,
             is_active: bool = True,
-            is_superuser:bool = False,
+            is_superuser:bool = False,                                                                      
             ):
         return User.objects.create_user(
             type_user=type_user,

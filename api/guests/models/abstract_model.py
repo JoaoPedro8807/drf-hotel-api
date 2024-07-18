@@ -4,9 +4,9 @@ from django.utils import timezone
 
 class BaseAbstractModel(models.Model):
     """
-    A model to add uuid to Model
+    A model to add uuid to main Model
     the reason is because uuid conflit with orders default django tables and uuid model 
-    costs a lot to Postgres transitions
+    cost more than int id to Postgres transitions
     """
     id = models.BigAutoField(primary_key=True, editable=False)
     uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)

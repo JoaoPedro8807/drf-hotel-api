@@ -1,9 +1,9 @@
-from hotel.tests.base.hotel_mixins import HotelMixin
+from hotel.tests.base.room_mixins import RoomMixin
 from guests.tests.mixins.user_mixins import UserAPIMixin
 from django.urls import reverse
 import json
 
-class BookingTestMixin(HotelMixin, UserAPIMixin):
+class BookingTestMixin(RoomMixin, UserAPIMixin): 
     def make_all_booking_data(
         self,
         guest_email: str = 'testandoboking@gmail.com',
@@ -11,13 +11,13 @@ class BookingTestMixin(HotelMixin, UserAPIMixin):
         total_days: int = 5,
         all_data = False
     ) -> dict:
-        hotel = self.make_login_and_hotel().get('create_response')
-        room_to_booking = hotel.data.get('rooms')[0]
+        
+        room_to_booking = self.make_room_and_hotel()
+        hotel = room_to_booking.data.get('hotel_id')
 
         guest_data = self.make_user_data(
             email=guest_email, 
             password = guest_password)
-        
         guest_user = self.client.post(
             self.urls.get('create_user'),
             data={**guest_data}
@@ -34,7 +34,7 @@ class BookingTestMixin(HotelMixin, UserAPIMixin):
   
         post_data = {
             'guest': str(guest_id),
-            'room': room_to_booking.get('id'),
+            'room': str(room_to_booking.data.get('id')),
             'days': int(total_days)
         }   
         booking_response = self.client.post(
@@ -60,10 +60,7 @@ class BookingTestMixin(HotelMixin, UserAPIMixin):
         hotel = self.make_hotel(hotelier_user=hotelier, access_token=login_hotelier.data.get('access'))
         return hotel, login_hotelier, hotelier
     
-    def make_room_to_booking(self):
-        hotel = self.make_login_and_hotel().get('create_response')
-        room_to_booking = hotel.data.get('rooms')[0]
-        return room_to_booking
+ 
 
     def make_only_booking(self, guest_id, access, room_id, total_days=5):
         post_data = {

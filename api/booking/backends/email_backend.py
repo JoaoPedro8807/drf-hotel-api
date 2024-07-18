@@ -4,6 +4,9 @@ from django.utils.functional import cached_property
 
 
 class EmailBackend(SMTPBackend):
+    """
+    to emailbackend work in django 4>
+    """
     @cached_property
     def ssl_context(self):
         if self.ssl_certfile or self.ssl_keyfile:
