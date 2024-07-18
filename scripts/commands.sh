@@ -29,5 +29,5 @@ python manage.py migrate --noinput
 python manage.py runserver 0.0.0.0:8000 
 
 #comands do celery : 
-#celery work -> celery -A project worker --pool=solo -l info (iniciar antes e separado)
-#celery beat -> celery -A project beat -l INFO
+celery -A project worker --pool=solo -l info (iniciar antes e separado)
+celery -A project beat -l INFO
