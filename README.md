@@ -49,6 +49,9 @@ Deploy da API: [link para o deploy se houver]
 
 
 
+## Video com um pouco do funcionamento da API : https://www.youtube.com/watch?v=biL52SBehxw
+
+
     
 
 ✔️ Tecnologias utilizadas
@@ -61,3 +64,5 @@ Deploy da API: [link para o deploy se houver]
     
 
 <img loading="lazy" src="https://avatars.githubusercontent.com/u/88624922?v=4" width=115><br><sub>João Pedro</sub>
+
+[https://www.youtube.com/watch?v=biL52SBehxw]: https://www.youtube.com/watch?v=biL52SBehxw
