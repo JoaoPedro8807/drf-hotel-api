@@ -3,8 +3,8 @@
 <img src="http://img.shields.io/static/v1?label=STATUS&message=Em%20Desenvolvimento&color=YELLOW&style=for-the-badge">
 </p>
 
-Uma API para administrar hotéis, onde usuários podem se cadastrar como hóspedes ou hoteleiros. Hoteleiros podem criar seus hotéis, quartos e editar suas reservas. Hóspedes podem fazer reservas para algum quarto do hotel.
-Deploy da API: [link para o deploy se houver]
+Uma API para administrar hotéis, onde usuários podem se cadastrar como hóspedes ou hoteleiros. Hoteleiros podem criar seus hotéis com seus respectivos quartos personalizado e visualizar reserva feitas e quartos ocupados em seu hotel. Hóspedes procurarar por quarto ou por hotel, podem fazer reservas para algum quarto do hotel, editar sua reserva.
+Deploy da API:
 
 🔨 Funcionalidades:
 - 1: Cadastro de usuários como hóspedes ou hoteleiros.
@@ -64,5 +64,3 @@ Deploy da API: [link para o deploy se houver]
     
 
 <img loading="lazy" src="https://avatars.githubusercontent.com/u/88624922?v=4" width=115><br><sub>João Pedro</sub>
-
-[https://www.youtube.com/watch?v=biL52SBehxw]: https://www.youtube.com/watch?v=biL52SBehxw
