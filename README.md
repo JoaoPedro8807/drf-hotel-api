@@ -48,6 +48,10 @@ Deploy da API:
     - Hóspedes dados booking e do quarto que está hospedado, além do histórico e dados pessoais.
 
 
+# Deploy da API no GCP: https://hotel-api-ugz3zongra-rj.a.run.app/
+
+## Doc swagger: https://hotel-api-ugz3zongra-rj.a.run.app/api/schema/swagger-ui
+
 
 ## Video com um pouco do funcionamento da API : https://www.youtube.com/watch?v=biL52SBehxw
 
