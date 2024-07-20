@@ -23,13 +23,16 @@ Deploy da API:
 
 ## 📈 Rascunho do diagrama 
 ![DIAGRAMA](/api/utils/deploy/schema.png)
-![DIAGRAMA](/api/utils/deploy/cachec.png)
+
 
     Fiz esses rascunhos no início projeto como rascunho de ideias, o fluxo para cada usuário segue esse diagrama com seus respectivos fluxos e dados, com pequenas alterações.
 
+
+
+ 
+    E esse sistema de cache, em todos os endpoints de list, esse cache serve a mesma lógica.
     
-
-
+![DIAGRAMA](/api/utils/deploy/cachec.png)    
 
     
 
