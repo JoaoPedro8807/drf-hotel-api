@@ -18,19 +18,19 @@ Deploy da API:
 ![DER](/api/utils/deploy/DER-ENTIDADES.png)
 
 💬 
-    Algumas tabelas que não está aqui, eu reaproveite do próprio django. A tabela UserAuth é um model reescrito do User padrão do django com algumas modificações, emas ela continua sendo a responsável por autenticação e autorização. 
+    Algumas tabelas que não está aqui, eu reaproveite do próprio django. A tabela UserAuth é um model reescrito do User padrão do django com algumas modificações, mas ela continua sendo a responsável por autenticação e autorização. 
 
 
 ## 📈 Rascunho do diagrama 
 ![DIAGRAMA](/api/utils/deploy/schema.png)
 
 
-    Fiz esses rascunhos no início projeto como rascunho de ideias, o fluxo para cada usuário segue esse diagrama com seus respectivos fluxos e dados, com pequenas alterações.
+    O fluxo de dados para cada usuário segue esse diagrama, com algumas pequenas alterações.
 
 
 
  
-    E esse sistema de cache, em todos os endpoints de list, esse cache serve a mesma lógica.
+    E o sistema de chace com Redis, segue o diagrama abaixo, onde o cache da view é guardado com certa chave, e qualquer alteração no PosgresSQL, o signals do django consegue excluir essa key do redis e consequentemente atualizar o cachce da página.
     
 ![DIAGRAMA](/api/utils/deploy/cachec.png)    
 
