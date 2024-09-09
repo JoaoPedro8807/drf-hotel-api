@@ -21,7 +21,7 @@ Deploy da API:
     Algumas tabelas que não está aqui, eu reaproveite do próprio django. A tabela UserAuth é um model reescrito do User padrão do django com algumas modificações, mas ela continua sendo a responsável por autenticação e autorização. 
 
 
-## 📈 Rascunho do diagrama 
+## 📈 Fluxo de dados 
 ![DIAGRAMA](/api/utils/deploy/schema.png)
 
 
