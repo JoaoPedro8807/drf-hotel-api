@@ -2,6 +2,8 @@
  
 #  🚀 Documentação completa: https://hotelaria-api.onrender.com/api/schema/swagger-ui/
 
+# Deploy da API no GCP:   https://hotelaria-api.onrender.com
+
 Uma API para administrar hotéis, onde usuários podem se cadastrar como hóspedes ou hoteleiros. Hoteleiros podem criar seus hotéis com seus respectivos quartos personalizado e visualizar reserva feitas e quartos ocupados em seu hotel. Hóspedes procurarar por quarto ou por hotel, podem fazer reservas para algum quarto do hotel, editar sua reserva.
 Deploy da API:
 
@@ -50,7 +52,7 @@ Deploy da API:
     - Hóspedes dados booking e do quarto que está hospedado, além do histórico e dados pessoais.
 
 
-# Deploy da API no GCP:   https://hotelaria-api.onrender.com/api/schema/swagger-ui/
+# Deploy da API no GCP:   https://hotelaria-api.onrender.com
 
 
 ## Documentação swagger: https://hotel-api-ugz3zongra-rj.a.run.app/api/schema/swagger-ui
