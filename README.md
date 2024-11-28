@@ -1,9 +1,5 @@
  # Administração de Hotel com Django REST Framework
  
-#  🚀 Documentação completa: https://hotelaria-api.onrender.com/api/schema/swagger-ui/
-
-# Deploy da API no GCP:   https://hotelaria-api.onrender.com
-
 Uma API para administrar hotéis, onde usuários podem se cadastrar como hóspedes ou hoteleiros. Hoteleiros podem criar seus hotéis com seus respectivos quartos personalizado e visualizar reserva feitas e quartos ocupados em seu hotel. Hóspedes procurarar por quarto ou por hotel, podem fazer reservas para algum quarto do hotel, editar sua reserva.
 Deploy da API:
 
@@ -60,8 +56,7 @@ Deploy da API:
 
 ## Video com um pouco do funcionamento da API : https://www.youtube.com/watch?v=biL52SBehxw
 
-
-    
+#  🚀 Documentação completa: https://hotelaria-api.onrender.com/api/schema/swagger-ui/
 
 ✔️ Tecnologias utilizadas
 
