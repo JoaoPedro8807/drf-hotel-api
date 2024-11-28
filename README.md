@@ -48,7 +48,6 @@ Deploy da API:
     - Hóspedes dados booking e do quarto que está hospedado, além do histórico e dados pessoais.
 
 
-# Deploy da API no GCP:   https://hotelaria-api.onrender.com
 
 
 ## Documentação swagger: https://hotel-api-ugz3zongra-rj.a.run.app/api/schema/swagger-ui
@@ -56,7 +55,7 @@ Deploy da API:
 
 ## Video com um pouco do funcionamento da API : https://www.youtube.com/watch?v=biL52SBehxw
 
-#  🚀 Documentação completa: https://hotelaria-api.onrender.com/api/schema/swagger-ui/
+
 
 ✔️ Tecnologias utilizadas
 
