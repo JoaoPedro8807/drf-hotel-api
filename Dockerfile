@@ -34,5 +34,7 @@ RUN python -m venv /venv && \
 # Atualiza o PATH
 ENV PATH="/scripts:/venv/bin:$PATH"
 
+ENTRYPOINT ["sh", "-c", "python manage.py makemigrations --noinput && python manage.py migrate --noinput && python manage.py runserver 0.0.0.0:8000"]
+
 # Define o comando padrão
-CMD ["commands.sh"]
+#CMD ["commands.sh"]

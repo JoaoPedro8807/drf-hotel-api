@@ -1,11 +1,10 @@
+#type: ignore
 from rest_framework import viewsets, mixins
 from ..models.booking_model import Booking
 from rest_framework.permissions import IsAuthenticated
 from ..serializers.booking_serizlier import BookingSerializer
 from ..permissions import BookingPermission
 from rest_framework.validators import ValidationError as APIValidationError
-
-
 
 class BookingViewSet(
         viewsets.GenericViewSet,
@@ -21,8 +20,6 @@ class BookingViewSet(
     http_method_names  = ['post', 'delete', 'get']
     serializer_class = BookingSerializer
     permission_classes = [IsAuthenticated, BookingPermission]
-
-
 
     def get_object(self):
         return super().get_object()

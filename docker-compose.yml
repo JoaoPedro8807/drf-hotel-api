@@ -1,8 +1,8 @@
 version: '3.9'
 
 services:
-  api_hotel:
-    container_name: api_hotel
+  api_hotel-drf:
+    container_name: api_hotel-drf
     build:
       context: .
     ports:
@@ -14,20 +14,20 @@ services:
     env_file:
       - ./dotenv_files/.env
     depends_on:
-      - psql
-      - redis
+      - psql-db
+      - redis-cache
     environment:
       - TZ=America/Sao_Paulo          
 
-  psql:
-    container_name: psql
+  psql-db:
+    container_name: psql-db
     image: postgres:13-alpine
     volumes:
       - ./data/postgres/data:/var/lib/postgresql/data/
     env_file:
       - ./dotenv_files/.env
     ports:
-      - 5432:5432
+      - 5432:5432                             
 
   pgadmin:
     container_name: pgadmin
@@ -38,27 +38,17 @@ services:
       PGADMIN_DEFAULT_EMAIL: hotel@gmail.com
       PGADMIN_DEFAULT_PASSWORD: hotel123
     depends_on:
-      - psql
+      - psql-db
     volumes:
       - pgadmin_data:/var/lib/pgadmin
 
-  redis:
-    container_name: redis
+  redis-cache:
+    container_name: redis-cache
     image: redis:alpine
     ports:
       - 6379:6379
 
-  # celery:
-  #   build:
-  #       context: .
-  #   volumes:
-  #     - .:/app
-  #   command: celery -A project worker -B --loglevel=info   
-
-  #   depends_on:
-  #     - redis
-  #   env_file:
-  #     - ./dotenv_files/.env      
+  
 
 volumes:
   pgadmin_data:

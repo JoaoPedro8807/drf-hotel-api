@@ -13,6 +13,9 @@ Deploy da API:
 - 5: Notificação por email de usuário para cada reserva 
 
 
+### 🛠️ DOCS SWAGGER :
+![DER](/api/utils/deploy/print-docs.png)
+
 
 ### 🛠️ Schema/DER:
 ![DER](/api/utils/deploy/DER-ENTIDADES.png)
