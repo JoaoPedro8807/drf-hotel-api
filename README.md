@@ -1,7 +1,5 @@
  # Administração de Hotel com Django REST Framework
  
-#  🚀 https://hotel-api-ugz3zongra-rj.a.run.app/api/schema/swagger-ui
-
 Uma API para administrar hotéis, onde usuários podem se cadastrar como hóspedes ou hoteleiros. Hoteleiros podem criar seus hotéis com seus respectivos quartos personalizado e visualizar reserva feitas e quartos ocupados em seu hotel. Hóspedes procurarar por quarto ou por hotel, podem fazer reservas para algum quarto do hotel, editar sua reserva.
 Deploy da API:
 
@@ -21,19 +19,19 @@ Deploy da API:
 ![DER](/api/utils/deploy/DER-ENTIDADES.png)
 
 💬 
-    Algumas tabelas que não está aqui, eu reaproveite do próprio django. A tabela UserAuth é um model reescrito do User padrão do django com algumas modificações, emas ela continua sendo a responsável por autenticação e autorização. 
+    Algumas tabelas que não está aqui, eu reaproveite do próprio django. A tabela UserAuth é um model reescrito do User padrão do django com algumas modificações, mas ela continua sendo a responsável por autenticação e autorização. 
 
 
-## 📈 Rascunho do diagrama 
+## 📈 Fluxo de dados 
 ![DIAGRAMA](/api/utils/deploy/schema.png)
 
 
-    Fiz esses rascunhos no início projeto como rascunho de ideias, o fluxo para cada usuário segue esse diagrama com seus respectivos fluxos e dados, com pequenas alterações.
+    O fluxo de dados para cada usuário segue esse diagrama, com algumas pequenas alterações.
 
 
 
  
-    E esse sistema de cache, em todos os endpoints de list, esse cache serve a mesma lógica.
+    E o sistema de chace com Redis, segue o diagrama abaixo, onde o cache da view é guardado com certa chave, e qualquer alteração no PosgresSQL, o signals do django consegue excluir essa key do redis e consequentemente atualizar o cachce da página.
     
 ![DIAGRAMA](/api/utils/deploy/cachec.png)    
 
@@ -53,16 +51,14 @@ Deploy da API:
     - Hóspedes dados booking e do quarto que está hospedado, além do histórico e dados pessoais.
 
 
-# Deploy da API no GCP:   https://hotel-api-ugz3zongra-rj.a.run.app/
 
 
-## Docs swagger: https://hotel-api-ugz3zongra-rj.a.run.app/api/schema/swagger-ui
+## Documentação swagger: https://hotel-api-ugz3zongra-rj.a.run.app/api/schema/swagger-ui
 
 
 ## Video com um pouco do funcionamento da API : https://www.youtube.com/watch?v=biL52SBehxw
 
 
-    
 
 ✔️ Tecnologias utilizadas
 
